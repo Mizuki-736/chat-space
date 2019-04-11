@@ -1,0 +1,8 @@
+.form{
+  width: calc(100% - 300px);
+  height: 90px;
+  float: right;
+  background-color: $form;
+  box-sizing: border-box;
+  padding: 20px 40px;
+}
