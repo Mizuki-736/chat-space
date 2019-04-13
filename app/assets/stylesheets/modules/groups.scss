@@ -5,16 +5,17 @@
   float: left;
   padding: 20px 20px 0px 20px;
   box-sizing: border-box;
-  &__left{
+  .group{
     margin-bottom: 40px;
-    p{
+    &--name{
       font-size: 15px;
       text-decoration: bold;
       color: $white;
     }
-    p.group_title{
+    .group__name{
       padding-top: 5px;
       font-size: 11px;
+      color: $white;
     }
   }
 }
