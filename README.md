@@ -1,6 +1,6 @@
 # DB設計
 
-## groups_usersテーブル
+## group_usersテーブル
 
 |Column  |Type   |Options|
 |--------|-------|-------|
@@ -20,8 +20,8 @@
 |encrypted_password|string| null: false|
 
 ### Association
-- has_many :groups_users
-- has_many :groups, through: :groups_users
+- has_many :group_users
+- has_many :groups, through: :group_users
 - has_many :messages
 
 ## groupsテーブル
@@ -31,8 +31,8 @@
 |name      |string |null: false|
 
 ### Association
-- has_many :groups_users
-- has_many :users, through: :groups_users
+- has_many :group_users
+- has_many :users, through: :group_users
 - has_many :messages
 
 ## messagesテーブル
@@ -45,5 +45,5 @@
 |image     |text   |
 
 ### Association
-- belongs_to :users
+- belongs_to :user
 - belongs_to :group
