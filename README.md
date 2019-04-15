@@ -1,6 +1,6 @@
 # DB設計
 
-## membersテーブル
+## groups_usersテーブル
 
 |Column  |Type   |Options|
 |--------|-------|-------|
@@ -19,8 +19,8 @@
 |group_id|integer|null: false|
 
 ### Association
-- has_many :menbers
-- has_many :groups, through: :members
+- has_many :groups_users
+- has_many :groups, through: :groups_users
 - has_many :messages
 
 ## groupsテーブル
@@ -32,8 +32,8 @@
 |message_id|integer|null: false , foreign_key: true|
 
 ### Association
-- has_many :menbers
-- has_many :users, through: :members
+- has_many :groups_users
+- has_many :users, through: :groups_users
 - has_many :messages
 
 ## messagesテーブル
