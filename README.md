@@ -4,8 +4,8 @@
 
 |Column  |Type   |Options|
 |--------|-------|-------|
-|user_id |integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id |references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -39,9 +39,9 @@
 
 |Column    |Type   |Option|
 |----------|-------|------|
-|text      |text   |null: false|
-|user_id   |integer|null: false , foreign_key: true|
-|group_id  |integer|null: false , foreign_key: true|
+|content   |text   ||
+|user_id   |references|null: false , foreign_key: true|
+|group_id  |references|null: false , foreign_key: true|
 |image     |text   |
 
 ### Association
