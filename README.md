@@ -1,11 +1,11 @@
 # DB設計
 
-## membersテーブル
+## group_usersテーブル
 
 |Column  |Type   |Options|
 |--------|-------|-------|
-|user_id |integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id |references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -15,36 +15,35 @@
 
 |Column  |Type   |Option|
 |--------|-------|------|
-|name    |string |null: false|
-|group_id|integer|null: false|
+|name    |string |null: false, unique: true|
+|email   |string |null: false, |
+|encrypted_password|string| null: false|
 
 ### Association
-- has_many :menbers
-- has_many :groups, through: :members
+- has_many :group_users
+- has_many :groups, through: :group_users
 - has_many :messages
 
 ## groupsテーブル
 
 |Column    |Type   |Option|
 |----------|-------|------|
-|group_name|string |null: false|
-|user_id   |integer|null: false , foreign_key: true|
-|message_id|integer|null: false , foreign_key: true|
+|name      |string |null: false|
 
 ### Association
-- has_many :menbers
-- has_many :users, through: :members
+- has_many :group_users
+- has_many :users, through: :group_users
 - has_many :messages
 
 ## messagesテーブル
 
 |Column    |Type   |Option|
 |----------|-------|------|
-|text      |text   |null: false|
-|user_id   |integer|null: false , foreign_key: true|
-|group_id  |integer|null: false , foreign_key: true|
+|content   |text   ||
+|user_id   |references|null: false , foreign_key: true|
+|group_id  |references|null: false , foreign_key: true|
 |image     |text   |
 
 ### Association
-- belongs_to :users
+- belongs_to :user
 - belongs_to :group
