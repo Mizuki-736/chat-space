@@ -15,8 +15,9 @@
 
 |Column  |Type   |Option|
 |--------|-------|------|
-|name    |string |null: false|
-|group_id|integer|null: false|
+|name    |string |null: false, unique: true|
+|email   |string |null: false, |
+|encrypted_password|string| null: false|
 
 ### Association
 - has_many :groups_users
@@ -27,9 +28,7 @@
 
 |Column    |Type   |Option|
 |----------|-------|------|
-|group_name|string |null: false|
-|user_id   |integer|null: false , foreign_key: true|
-|message_id|integer|null: false , foreign_key: true|
+|name      |string |null: false|
 
 ### Association
 - has_many :groups_users
