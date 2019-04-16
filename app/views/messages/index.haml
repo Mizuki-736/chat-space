@@ -24,8 +24,12 @@
             %div.edit__button Edit
     %div.groups
       %div.groups__left
-        %p sample
-        %P.group_title Good bye world!
+        - current_user.groups.each do |group|
+          = link_to group_messages_path(group) do
+            %div.group__name
+              = group.name
+            %div.group__message
+              メッセージはまだありません。
     %div.content__messages
       %div.message
         %div.message__info
