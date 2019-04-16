@@ -11,16 +11,6 @@
           %li
             = link_to edit_user_path(current_user) do
               = fa_icon 'cog', class: 'icon'
-    %div.menu__right
-      %div.group__display
-        %div.group__display--name
-          %h2 sample
-          %ul
-            %li Members:
-            %li seo
-            %li neko
-        %a.edit
-          %div.edit__button Edit
   %div.groups
     %div.groups__left
       - current_user.groups.each do |group|
