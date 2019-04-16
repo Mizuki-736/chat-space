@@ -10,19 +10,17 @@
     &__info{
       box-sizing: border-box;
       padding-bottom: 10px;
-      p{
+      .upper-message__user-name{
         font-size: 16px;
         font-weight: bold;
         display: inline;
         color: #434A54;
       }
-      ul{
+      .upper-message__date{
         font-size: 12px;
         margin-left: 10px;
         display: inline;
         color: #999999;
-        li{
-          display: inline-block;
         }
       }
     }
@@ -30,6 +28,4 @@
       font-size: 14px;
       color: #434A54;
     }
-  }
-
 }

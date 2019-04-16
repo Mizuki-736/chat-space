@@ -1,6 +1,6 @@
 %body
   %div.wrapper
-    %div.menu
+    %dev.menu
       %div.menu__right
         %div.group__display
           %div.group__display--name
@@ -9,24 +9,13 @@
               %li Members:
               %li seo
               %li neko
-          %a.edit
-            -# = link_to edit_group_path(@group) do
-            %div.edit__button Edit
+          %div.edit
+            = link_to 'Edit', "/groups/#{@group.id}/edit", method: :get, class: 'edit__button'
+    =render 'shared/menu_group'
     %div.content__messages
       %div.message
-        %div.message__info
-          %p seo
-          %ul
-            %li 2017-05-18
-            %li 13:19:51 UTC
-        %p.text はじめまして
-      %div.message
-        %div.message__info
-          %p seo
-          %ul
-            %li 2017-05-18
-            %li 13:20:00 UTC
-        %p.text よろしくお願いします
+        = render @messages
+        /インスタンス変数を単数形にしたものと部分テンプレートの名前が同じなら上記のように省略できる
     %div.form
       = form_for [@group, @message] do |f|
         = f.text_field :content, class: 'form__message', placeholder: 'type a message'
