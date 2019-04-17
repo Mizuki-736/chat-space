@@ -4,4 +4,5 @@ class Message < ApplicationRecord
 
   validates :content, presence: true, unless: :image?
   # imageが無い時に空の値をはじく
+  mount_uploader :image, ImageUploader
 end

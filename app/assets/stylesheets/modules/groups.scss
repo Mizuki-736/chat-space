@@ -7,14 +7,17 @@
   box-sizing: border-box;
   &__left{
     margin-bottom: 40px;
-    .group__name{
+    .name{
       font-size: 15px;
-      text-decoration: bold;
       color: $white;
     }
-    .group_messages{
+    p{
       padding-top: 5px;
       font-size: 11px;
+      color: $white;
     }
+  }
+  a{
+    text-decoration: none;
   }
 }
