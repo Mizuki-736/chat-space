@@ -20,6 +20,10 @@ $(document).on('turbolinks:load', function(){
       return html;
     }
 
+    function scrollBottom(){
+      $('.content__messages').animate({scrollTop: $('.content__messages')[0].scrollHeight}, 'fast');
+    };
+
     $('#new_message').on('submit', function(e){
       e.preventDefault();
       var formData = new FormData(this);
@@ -37,6 +41,7 @@ $(document).on('turbolinks:load', function(){
         $(".form__submit").prop('disable', false);
         var html = buildHTML(data);
         $('.message').append(html);
+        scrollBottom();
       });
     });
   });
