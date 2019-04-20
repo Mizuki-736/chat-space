@@ -20,7 +20,7 @@ $(document).on('turbolinks:load', function(){
       return html;
     }
 
-    function scrollBottom(){
+    function scrollBottom(){ //ページ下部へスクロールする関数
       $('.content__messages').animate({scrollTop: $('.content__messages')[0].scrollHeight}, 'fast');
     };
 
@@ -36,13 +36,17 @@ $(document).on('turbolinks:load', function(){
         processData: false,
         contentType: false
       })
-      .done(function(data){
-        console.log(data.body)
-        $(".form__submit").prop('disable', false);
+      .done(function(data){ //成功時処理
         var html = buildHTML(data);
         $('.message').append(html);
+        $('.form__message').val(''); //フォームデータリセット
+        $('.hidden').val(''); //imageデータリセット
         scrollBottom();
-      });
+        $(".form__submit").prop('disabled', false); //送信ボタンを何度も押せるように
+      })
+      .fail(function(){ //失敗時処理
+        alert('エラーが発生したためメッセージ送信ができませんでした');
+      })
     });
   });
 });
