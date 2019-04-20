@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
     if @message.save #もし、メッセージ保存がtrueなら
       respond_to do |format|
         format.html {vredirect_to group_messages_path(@group), notice: 'メッセージが送信されました' }
-        format.json
+        format.json #jbuilderへ処理が移行
       end
     else
       @messages = @group.messages.includes(:user) # indexの表記と同じ
