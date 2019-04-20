@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
     @message = @group.messages.new(message_params)
     if @message.save #もし、メッセージ保存がtrueなら
       respond_to do |format|
-        format.html {vredirect_to group_messages_path(@group), notice: 'メッセージが送信されました' }
+        format.html { redirect_to group_messages_path(@group), notice: 'メッセージが送信されました' }
         format.json #jbuilderへ処理が移行
       end
     else
