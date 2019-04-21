@@ -6,7 +6,7 @@ $(function(){
   function appendUser(user){
     var html = `<div class="chat-group-user clearfix">
                   <p class="chat-group-user__name">${user.name}</p>
-                  <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
+                  <p class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</p>
                 </div>`
     search_list.append(html)
   }
@@ -21,7 +21,7 @@ $(function(){
     var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
                   <input name='group[user_ids][]' type='hidden' value='${id}'>
                   <p class='chat-group-user__name'>${name}</p>
-                  <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
+                  <p class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</p>
                 </div>`
     search_append_list.append(html);
   }
@@ -58,8 +58,7 @@ $(function(){
       var name = $(this).data('user-name');
       // console.log(id, name); ユーザー情報の取得を確認
       appendEditUser(id,name);
-      var user = $(this).parent();
-      user.remove();
+      var user = $(this).parent().remove();
     });
     $(".chat-group-form").on("click", ".user-search-remove", function(){
       var user = $(this).parent().remove();
