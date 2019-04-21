@@ -36,6 +36,7 @@
             = f.hidden_field :user_id, value: current_user.id, name: 'group[user_ids][]'
             = current_user.name
         = render partial: 'groups/user', collection: @group.users.where.not(id: current_user.id)
+        /このwhere.notでチャットメンバーにログイン中のユーザーが複数表示されるのを防ぐ,collectionでrenderを@group.usersの要素分生成する
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
