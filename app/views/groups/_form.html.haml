@@ -30,12 +30,12 @@
 
       / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
       %div{id: 'chat-group-users'}
-        %div.chat-group-user.clearfix{id:'chat-group-user-22'}
-          = f.hidden_field :user_ids, value: current_user.id, multiple: true
+        %div.chat-group-user.clearfix{id:'chat-group-user'}
           /%input{name:'chat_group[user_ids][]', type:'hidden', value:'22'}
           %p.chat-group-user__name
+            = f.hidden_field :user_id, value: current_user.id, name: 'group[user_ids][]'
             = current_user.name
-
+        = render partial: 'groups/user', collection: @group.users.where.not(id: current_user.id)
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
