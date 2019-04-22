@@ -1,30 +1,32 @@
 $(document).on('turbolinks:load', function(){
   $(function(){
-    // console.log(location.pathname.split('/')[2]);
-    function buildHTML(message){
+    //HTML生成
+    function buildHTML(message){ //messageをハッシュで取得してる
       var image = ""
       message.image ? image = `<img class="lower-message__image" src="${message.image}">` : image = ""
-      var html = `<div class="message__info" data-id="${message.id}">
-                    <div class="upper-message__user-name">
-                      ${message.user_name}
+      var html = `<div class="message" data-message-id="${message.id}">
+                    <div class="message__info" data-id="${message.id}">
+                      <div class="upper-message__user-name">
+                        ${message.user_name}
+                      </div>
+                      <div class="upper-message__date">
+                        ${message.date}
+                      </div>
                     </div>
-                    <div class="upper-message__date">
-                      ${message.date}
+                    <div class="lower-meesage">
+                      <p class="text">
+                        ${message.content}
+                      </p>
+                      ${image}
                     </div>
-                  </div>
-                  <div class="lower-meesage">
-                    <p class="text">
-                      ${message.content}
-                    </p>
-                    ${image}
                   </div>`;
       return html;
     }
-
-    function scrollBottom(){ //ページ下部へスクロールする関数
+    //ページ下部へスクロールする関数
+    function scrollBottom(){
       $('.content__messages').animate({scrollTop: $('.content__messages')[0].scrollHeight}, 'fast');
     };
-
+    //message送信時の非同期通信
     $('#new_message').on('submit', function(e){
       e.preventDefault();
       var formData = new FormData(this);
@@ -37,9 +39,9 @@ $(document).on('turbolinks:load', function(){
         processData: false,
         contentType: false
       })
-      .done(function(data){ //成功時処理
-        var html = buildHTML(data);
-        $('.messages').append(html);
+      .done(function(data){ //成功時処理、引数にformDataが入ってる
+        var html = buildHTML(data); //変数htmlに関数buildHTML(data)を代入
+        $('.messages').append(html); //クラスに変数htmlを挿入してる
         $('.form__message').val(''); //フォームデータリセット
         $('.hidden').val(''); //imageデータリセット
         scrollBottom();
@@ -52,22 +54,29 @@ $(document).on('turbolinks:load', function(){
     //自動更新
     var reloadMessages = function() {
       var last_message_id = $(".message").last().data('message-id')
-      var groupId = location.pathname.split('/')[2]
-      console.log(groupId)//id取得を確認
-      console.log(last_message_id)
+      //ブラウザ上の最後のidを取得、classに注意、生成するhtmlに最新のidが無いと機能しない
+      var groupId = location.pathname.split('/')[2]//group_idの取得
       $.ajax({
-        url:      `/groups/${groupId}/api/messages`,
+        url:      `/groups/${groupId}/api/messages`,// 変数使用時''でなく``を使う
         type:     'GET',
         dataType: 'json',
         data:     {id: last_message_id }
       })
       .done(function(messages) {
-        console.log('success');
+        var insertHTML = ''; //追加するHTMLの入れ物
+        messages.forEach(function(message){ //配列の中身を一つずつ取り出す,map()でも良い？
+          if(message.id > last_message_id){ //ブラウザ上のidとDBのidを比較
+            insertHTML = buildHTML(message);//関数buildHTMLに配列の中身を一つずつ代入
+            $('.messages').append(insertHTML);//message送信時と同じ
+            scrollBottom();
+          };
+        });
       })
       .fail(function(){
-        console.log('error');
+        alert('自動更新が停止しました')
       });
     };
+    //定期的に実行するメソッド
     setInterval(reloadMessages, 5000);
   });
 });
