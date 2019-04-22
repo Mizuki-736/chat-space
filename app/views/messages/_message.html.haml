@@ -1,10 +1,11 @@
-%div.message__info
-  .upper-message__user-name
-    = message.user.name
-  .upper-message__date
-    = message.created_at.strftime("%Y/%m/%d %H:%M")
-.lower-meesage
-  - if message.content.present?
-    %p.text
-      = message.content
-  = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+.message{data: {message_id: "#{message.id}" }}
+  .message__info
+    .upper-message__user-name
+      = message.user.name
+    .upper-message__date
+      = message.created_at.strftime("%Y/%m/%d %H:%M")
+  .lower-meesage
+    - if message.content.present?
+      %p.text
+        = message.content
+    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
