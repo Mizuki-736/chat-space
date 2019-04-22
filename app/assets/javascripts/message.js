@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', function(){
   $(function(){
+    // console.log(location.pathname.split('/')[2]);
     function buildHTML(message){
       var image = ""
       message.image ? image = `<img class="lower-message__image" src="${message.image}">` : image = ""
@@ -38,7 +39,7 @@ $(document).on('turbolinks:load', function(){
       })
       .done(function(data){ //成功時処理
         var html = buildHTML(data);
-        $('.message').append(html);
+        $('.messages').append(html);
         $('.form__message').val(''); //フォームデータリセット
         $('.hidden').val(''); //imageデータリセット
         scrollBottom();
@@ -48,5 +49,25 @@ $(document).on('turbolinks:load', function(){
         alert('エラーが発生したためメッセージ送信ができませんでした');
       })
     });
+    //自動更新
+    var reloadMessages = function() {
+      var last_message_id = $(".message").last().data('message-id')
+      var groupId = location.pathname.split('/')[2]
+      console.log(groupId)//id取得を確認
+      console.log(last_message_id)
+      $.ajax({
+        url:      `/groups/${groupId}/api/messages`,
+        type:     'GET',
+        dataType: 'json',
+        data:     {id: last_message_id }
+      })
+      .done(function(messages) {
+        console.log('success');
+      })
+      .fail(function(){
+        console.log('error');
+      });
+    };
+    setInterval(reloadMessages, 5000);
   });
 });
