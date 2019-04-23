@@ -73,7 +73,7 @@ $(document).on('turbolinks:load', function(){
         });
       })
       .fail(function(){
-        console.log('error');
+        alert('error');
       });
     };
     //定期的に実行するメソッド
