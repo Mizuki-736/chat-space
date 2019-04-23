@@ -72,10 +72,12 @@ $(document).on('turbolinks:load', function(){
         });
       })
       .fail(function(){
-        // alert('error');
+        alert('error');
       });
     };
     //定期的に実行するメソッド
-    setInterval(reloadMessages, 5000);
+    if(document.location.href.match("/messages")){ //pathに/messagesを含まないと作動しない
+      setInterval(reloadMessages, 5000);
+    };
   });
 });
