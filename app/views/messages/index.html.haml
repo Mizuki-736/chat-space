@@ -3,15 +3,16 @@
     .menu
       =render 'messages/menu_right'
     = render 'shared/menu_group'
-    .content__messages
-      .messages
-        = render @messages
-        /インスタンス変数を単数形にしたものと部分テンプレートの名前が同じなら上記のように省略できる
-    .form
-      = form_for [@group, @message] do |f|
-        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-        .form__mask
-          = f.label :image, class: 'form__mask__image' do
-            = fa_icon 'picture-o', class: 'icon'
-            = f.file_field :image, class: 'hidden'
-          = f.submit 'Send', class: 'form__submit'
+    .content-right
+      .content__messages
+        .messages
+          = render @messages
+          /インスタンス変数を単数形にしたものと部分テンプレートの名前が同じなら上記のように省略できる
+      .form
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+          .form__mask
+            = f.label :image, class: 'form__mask__image' do
+              = fa_icon 'picture-o', class: 'icon'
+              = f.file_field :image, class: 'hidden'
+            = f.submit 'Send', class: 'form__submit'
