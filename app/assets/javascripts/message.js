@@ -42,8 +42,7 @@ $(document).on('turbolinks:load', function(){
       .done(function(data){ //成功時処理、引数にformDataが入ってる
         var html = buildHTML(data); //変数htmlに関数buildHTML(data)を代入
         $('.messages').append(html); //クラスに変数htmlを挿入してる
-        $('.form__message').val(''); //フォームデータリセット
-        $('.hidden').val(''); //imageデータリセット
+        $('#new_message')[0].reset(); //フォームデータリセット
         scrollBottom();
         $(".form__submit").prop('disabled', false); //送信ボタンを何度も押せるように
       })
