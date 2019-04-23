@@ -1,13 +1,13 @@
 %body
-  %div.wrapper
-    %dev.menu
+  .wrapper
+    .menu
       =render 'messages/menu_right'
     = render 'shared/menu_group'
-    %div.content__messages
-      %div.message
+    .content__messages
+      .messages
         = render @messages
         /インスタンス変数を単数形にしたものと部分テンプレートの名前が同じなら上記のように省略できる
-    %div.form
+    .form
       = form_for [@group, @message] do |f|
         = f.text_field :content, class: 'form__message', placeholder: 'type a message'
         .form__mask
