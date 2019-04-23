@@ -73,7 +73,7 @@ $(document).on('turbolinks:load', function(){
         });
       })
       .fail(function(){
-        alert('自動更新が停止しました')
+        console.log('error');
       });
     };
     //定期的に実行するメソッド
