@@ -1,12 +1,12 @@
-%div.menu__right
-  %div.group__display
-    %div.group__display--name
+.menu__right
+  .group__display
+    .group__display--name
       %h2
         = @group.name
-      %div.members
+      .members
         %p Members:
         - @group.users.each do |user|
           %p
             = user.name
-    %div.edit
+    .edit
       = link_to 'Edit', "/groups/#{@group.id}/edit", method: :get, class: 'edit__button'
