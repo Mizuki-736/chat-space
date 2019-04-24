@@ -55,6 +55,7 @@ $(document).on('turbolinks:load', function(){
       var last_message_id = $(".message").last().data('message-id')
       //ブラウザ上の最後のidを取得、classに注意、生成するhtmlに最新のidが無いと機能しない
       var groupId = location.pathname.split('/')[2]//group_idの取得
+      // console.log(groupId)
       $.ajax({
         url:      `/groups/${groupId}/api/messages`,// 変数使用時''でなく``を使う
         type:     'GET',
@@ -72,11 +73,13 @@ $(document).on('turbolinks:load', function(){
         });
       })
       .fail(function(){
-        alert('error');
+        // alert('error');
       });
     };
     //定期的に実行するメソッド
-    if(document.location.href.match("/messages")){ //pathに/messagesを含まないと作動しない
+    if(document.location.href.match("/messages") && !isNaN(location.pathname.split('/')[2])){
+      //pathに/messagesを含まないと作動しない、isNaN＝数値ならfalseを返す
+      // console.log(!isNaN(location.pathname.split('/')[2]))
       setInterval(reloadMessages, 5000);
     };
   });

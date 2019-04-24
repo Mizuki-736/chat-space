@@ -3,7 +3,66 @@
   height: 100vh;
   display: table;
   .menu{
-    &__left{
+    width: calc(100% - 300px);
+    height: 100px;
+    float: right;
+    .menu__right{
+      background-color: white;
+      height: 100px;
+      width: calc(100vw - 300px);
+      float: right;
+      border-bottom: solid 1px #eeeeee;
+      .group__display{
+        height: 100px;
+        box-sizing: border-box;
+        padding: 0 40px;
+        &--name{
+          width: 75%;
+          height: 100%;
+          display: inline-block;
+          float: left;
+          padding-top: 35px;
+          box-sizing: border-box;
+
+          h2{
+            font-size: 20px;
+            color: #333333;
+          }
+          .members{
+            font-size: 12px;
+            color: #999999;
+            display: inline-block;
+            padding-top: 15px;
+            p{
+              display: inline-block;
+              margin-right: 3px;
+            }
+          }
+        }
+      }
+      .edit{
+        display: inline-block;
+        width: 25%;
+        height: 100px;
+        float: right;
+        &__button{
+          border: solid 1px $light_blue;
+          height: 40px;
+          float: right;
+          box-sizing: border-box;
+          margin-top:28px;
+          padding: 0 20px;
+          line-height: 40px;
+          color: $light_blue;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .group-menu{
+    height: 100vh;
+    width: 300px;
+    .menu__left{
       background-color: $menu_darkblue;
       width: 300px;
       height: 100px;
@@ -24,7 +83,7 @@
           width: 50%;
           height: 100%;
           }
-       ul{
+        ul{
           list-style: none;
           display: table-cell;
           width: 50%;
@@ -41,61 +100,5 @@
         }
       }
     }
-      .menu__right{
-        background-color: white;
-        height: 100px;
-        width: calc(100% - 300px);
-        float: right;
-        border-bottom: solid 1px #eeeeee;
-        .group__display{
-          height: 100px;
-          box-sizing: border-box;
-          padding: 0 40px;
-          &--name{
-            width: 75%;
-            height: 100%;
-            display: inline-block;
-            float: left;
-            padding-top: 35px;
-            box-sizing: border-box;
-
-            h2{
-              font-size: 20px;
-              color: #333333;
-            }
-            .members{
-              font-size: 12px;
-              color: #999999;
-              display: inline-block;
-              padding-top: 15px;
-              p{
-                display: inline-block;
-                margin-right: 3px;
-              }
-            }
-          }
-        }
-        .edit{
-          display: inline-block;
-          width: 25%;
-          height: 100px;
-          float: right;
-          &__button{
-            border: solid 1px $light_blue;
-            height: 40px;
-            float: right;
-            box-sizing: border-box;
-            margin-top:28px;
-            padding: 0 20px;
-            line-height: 40px;
-            color: $light_blue;
-            text-decoration: none;
-          }
-        }
-      }
-  }
-  .group-menu{
-    height: 100vh;
-    width: 300px;
   }
 }
