@@ -26,7 +26,6 @@ $(function(){
     search_append_list.append(html);
   }
 
-
     $("#user-search-field").on("keyup", function(){
     var input = $("#user-search-field").val(); //val()でフォームの値を取得
       $.ajax({
