@@ -7,7 +7,7 @@
       .content__messages
         .messages
           = render @messages
-          /インスタンス変数を単数形にしたものと部分テンプレートの名前が同じなら上記のように省略できる
+          /インスタンス変数を単数形にしたものと部分テンプレートの名前が同じなら上記のように省略できる、また、@messagesという複数形で省略してるため、each文が不要となっている
       .form
         = form_for [@group, @message] do |f|
           = f.text_field :content, class: 'form__message', placeholder: 'type a message'
