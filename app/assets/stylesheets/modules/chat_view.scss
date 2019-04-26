@@ -1,8 +1,7 @@
 .content-right{
   height: calc(100vh - 100px);
-  position: absolute;
-  top: 100px;
-  left: 300px;
+  width: calc(100% - 300px);
+  float: right;
   .content__messages{
     width: calc(100vw - 300px);
     height: calc(100vh - 190px);

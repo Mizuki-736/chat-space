@@ -1,6 +1,6 @@
 .wrapper{
-  width: 100vw;
-  height: 100vh;
+  width: auto;
+  height: auto;
   .menu{
     .menu__right{
       background-color: white;
@@ -56,7 +56,7 @@
     }
   }
   .group-menu{
-    height: 100vh;
+    height: 100%;
     width: 300px;
     .menu__left{
       background-color: $menu_darkblue;
